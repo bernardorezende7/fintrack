@@ -1,0 +1,1 @@
+console.log("FinTrack iniciado com sucesso!");
