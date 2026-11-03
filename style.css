@@ -145,14 +145,16 @@ select {
 
 .form-group input,
 .form-group select,
-.filter-label select {
-    width: 100%;
+.filter-label select,
+.filter-label input {
+    width: auto;
+    min-width: 125px;
     min-height: 44px;
-    padding: 10px 12px;
-    color: #202938;
-    background: #fff;
+    padding: 10px;
     border: 1px solid #cbd5e1;
     border-radius: 8px;
+    background: #fff;
+    color: #202938;
 }
 
 .form-group input:focus,

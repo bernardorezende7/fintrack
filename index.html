@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    
+
     <header class="header">
         <div class="container header-content">
             <a class="logo" href="#" aria-label="FinTrack - início">FinTrack</a>
@@ -47,29 +47,28 @@
 
             <form id="transaction-form">
                 <div class="form-grid">
+                    <label for="category">Categoria</label>
+                    <select id="category" name="category" required>
+                        <option value="other">Outros</option>
+                        <option value="food">Alimentação</option>
+                        <option value="housing">Moradia</option>
+                        <option value="transport">Transporte</option>
+                        <option value="health">Saúde</option>
+                        <option value="leisure">Lazer</option>
+                        <option value="education">Educação</option>
+                        <option value="salary">Salário</option>
+                        <option value="investment">Investimentos</option>
+                    </select>
                     <div class="form-group">
                         <label for="description">Descrição</label>
-                        <input
-                            id="description"
-                            name="description"
-                            type="text"
-                            placeholder="Ex.: Salário, mercado..."
-                            maxlength="100"
-                            required
-                        >
+                        <input id="description" name="description" type="text" placeholder="Ex.: Salário, mercado..."
+                            maxlength="100" required>
                     </div>
 
                     <div class="form-group">
                         <label for="amount">Valor (R$)</label>
-                        <input
-                            id="amount"
-                            name="amount"
-                            type="number"
-                            placeholder="0,00"
-                            min="0.01"
-                            step="0.01"
-                            required
-                        >
+                        <input id="amount" name="amount" type="number" placeholder="0,00" min="0.01" step="0.01"
+                            required>
                     </div>
 
                     <div class="form-group">
@@ -97,6 +96,8 @@
             <div class="history-header">
                 <h2>Histórico</h2>
                 <label for="filter-type" class="filter-label">
+                    Mês:
+                    <input id="filter-month" type="month">
                     Filtrar:
                     <select id="filter-type">
                         <option value="all">Todas</option>
@@ -120,4 +121,5 @@
         </div>
     </footer>
 </body>
+
 </html>
