@@ -4,77 +4,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FinTrack | Controle Financeiro</title>
+    <meta name="description" content="FinTrack: acompanhe suas receitas, despesas e seu saldo financeiro.">
+    <title>FinTrack | Controle financeiro</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
+
 <body>
-    <header>
-        <h1>FinTrack</h1>
-        <p>Seu dinheiro sob controle.</p>
+    
+    <header class="header">
+        <div class="container header-content">
+            <a class="logo" href="#" aria-label="FinTrack - início">FinTrack</a>
+            <span class="header-subtitle">Seu controle financeiro</span>
+        </div>
     </header>
 
-    <main>
-        <section id="resumo">
-            <h2>Resumo financeiro</h2>
-
-            <div class="cards">
-                <article class="card">
-                    <h3>Saldo atual</h3>
-                    <p id="saldo">R$ 0,00</p>
-                </article>
-
-                <article class="card">
-                    <h3>Receitas</h3>
-                    <p id="receitas">R$ 0,00</p>
-                </article>
-
-                <article class="card">
-                    <h3>Despesas</h3>
-                    <p id="despesas">R$ 0,00</p>
-                </article>
-            </div>
+    <main class="container main-content">
+        <section class="welcome">
+            <h1>Visão geral</h1>
+            <p>Acompanhe suas movimentações financeiras.</p>
         </section>
 
-        <section id="nova-movimentacao">
+        <section class="summary" aria-label="Resumo financeiro">
+            <article class="summary-card">
+                <span class="summary-label">Saldo atual</span>
+                <p class="summary-value" id="balance">R$ 0,00</p>
+            </article>
+
+            <article class="summary-card income-card">
+                <span class="summary-label">Total de receitas</span>
+                <p class="summary-value" id="total-income">R$ 0,00</p>
+            </article>
+
+            <article class="summary-card expense-card">
+                <span class="summary-label">Total de despesas</span>
+                <p class="summary-value" id="total-expenses">R$ 0,00</p>
+            </article>
+        </section>
+
+        <section class="panel">
             <h2>Nova movimentação</h2>
 
-            <form id="form-movimentacao">
-                <label for="descricao">Descrição</label>
-                <input
-                    type="text"
-                    id="descricao"
-                    placeholder="Ex.: Salário"
-                    required
-                >
+            <form id="transaction-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="description">Descrição</label>
+                        <input
+                            id="description"
+                            name="description"
+                            type="text"
+                            placeholder="Ex.: Salário, mercado..."
+                            maxlength="100"
+                            required
+                        >
+                    </div>
 
-                <label for="valor">Valor (R$)</label>
-                <input
-                    type="number"
-                    id="valor"
-                    min="0.01"
-                    step="0.01"
-                    placeholder="Ex.: 150.00"
-                    required
-                >
+                    <div class="form-group">
+                        <label for="amount">Valor (R$)</label>
+                        <input
+                            id="amount"
+                            name="amount"
+                            type="number"
+                            placeholder="0,00"
+                            min="0.01"
+                            step="0.01"
+                            required
+                        >
+                    </div>
 
-                <label for="tipo">Tipo</label>
-                <select id="tipo" required>
-                    <option value="receita">Receita</option>
-                    <option value="despesa">Despesa</option>
-                </select>
+                    <div class="form-group">
+                        <label for="type">Tipo</label>
+                        <select id="type" name="type" required>
+                            <option value="expense">Despesa</option>
+                            <option value="income">Receita</option>
+                        </select>
+                    </div>
 
-                <button type="submit">Adicionar movimentação</button>
+                    <div class="form-group">
+                        <label for="date">Data</label>
+                        <input id="date" name="date" type="date" required>
+                    </div>
+                </div>
+
+                <button class="button button-primary" type="submit">
+                    Adicionar movimentação
+                </button>
+                <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
             </form>
         </section>
 
-        <section id="historico">
-            <h2>Histórico</h2>
-            <ul id="lista-movimentacoes">
-                <li>Nenhuma movimentação cadastrada.</li>
-            </ul>
+        <section class="panel">
+            <div class="history-header">
+                <h2>Histórico</h2>
+                <label for="filter-type" class="filter-label">
+                    Filtrar:
+                    <select id="filter-type">
+                        <option value="all">Todas</option>
+                        <option value="income">Receitas</option>
+                        <option value="expense">Despesas</option>
+                    </select>
+                </label>
+            </div>
+
+            <div id="empty-state" class="empty-state">
+                Nenhuma movimentação cadastrada.
+            </div>
+
+            <ul id="transaction-list" class="transaction-list" aria-label="Movimentações financeiras"></ul>
         </section>
     </main>
 
-    <script src="script.js"></script>
+    <footer class="footer">
+        <div class="container">
+            <p>FinTrack — projeto de aprendizado em desenvolvimento.</p>
+        </div>
+    </footer>
 </body>
 </html>
